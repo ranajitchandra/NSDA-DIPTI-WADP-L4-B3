@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Listings</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        a {
+            text-decoration: none !important;
+            color: #fff;
+        }
+        a:hover{
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Job Title</th>
+          <th scope="col">Company Name</th>
+          <th scope="col">Skill</th>
+          <th scope="col">Address</th>
+          <th scope="col">Salary</th>
+          <th scope="col">Date</th>
+          <th scope="col">Category</th>
+          <th scope="col">User Name</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Sample data -->
+        {% for i in row %}
+            
+                <tr>
+                    <td>{{i.job_title}}</td>
+                    <td>{{i.company_name}}</td>
+                    <td>{{i.skill}}</td>
+                    <td>{{i.address}}</td>
+                    <td>{{i.salary}}</td>
+                    <td>{{i.date_line}}</td>
+                    <td>{{i.category}}</td>
+                    <td>{{i.created_by}}</td>
+                    <td><a class="text-dark font-weight-bold" href="{% url 'delete_data' i.id %}">Delete</a> | <a class="text-dark font-weight-bold" href="{% url 'editJob' i.id %}">Edit</a></td>
+                </tr>
+            
+        
+        {% endfor %}
+        
+        <!-- Add more rows for additional job listings -->
+      </tbody>
+    </table>
+  </div>
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+{% endblock content %}

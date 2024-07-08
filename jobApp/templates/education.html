@@ -1,0 +1,47 @@
+{% extends "profile.html" %}
+
+{% block profile %}
+
+{% for i in e %}
+<div class="card mb-3">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-3">
+                <h6 class="mb-0">Digree Name</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+                {{i.degree}}
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-3">
+                <h6 class="mb-0">Inst Name</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+                {{i.institute}}
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-3">
+                <h6 class="mb-0">Gpa</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+                {{i.gpa}}
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-3">
+                <h6 class="mb-0">Passing year</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+                {{i.passingyear}}
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock profile %}

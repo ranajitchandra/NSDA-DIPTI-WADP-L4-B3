@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Posted Job Model Table</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h2>Posted Job Model Table</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Job ID</th>
+          <th>Job Title</th>
+          <th>Qualification</th>
+          <th>Salary</th>
+          <th>Applicant</th>
+          <th>Action</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in get_post %}
+        <tr>
+          <td>{{ item.id}}</td>
+          <td>{{ item.job_title}}</td>
+          <td>{{ item.qualification}}</td>
+          <td>{{ item.salary}}</td>
+          <td>{{ item.created_by}}</td>
+          <td><a href="{% url 'see_applicant' item.id %}">Applicant</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <!-- Bootstrap JS (optional) -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+
+{% endblock content %}

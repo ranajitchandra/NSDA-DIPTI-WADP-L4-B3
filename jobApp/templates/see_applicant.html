@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Posted Job Model Table</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h2>Posted Job Model Table</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Who apply ID</th>
+                <th>Username</th>
+                <th>Skill</th>
+                <th>resume</th>
+                <th>Applicant</th>
+                <th>Status</th>
+                <th>Action</th>
+            
+            </tr>
+        </thead>
+        <tbody>
+        {% for item in applicant %}
+            <tr>
+                <td>{{item.id}}</td>
+                <td>{{item.applicant.username }}</td>
+                <td>{{item.skills }}</td>
+                <td>
+                    <a href="{{ item.resume.url}}" target="_blank">Resume</a>
+                </td>
+                <td>{{item.qualification}}</td>
+                <td>{{item.status}}</td>
+                <td>
+                <a href="{% url 'reject_application' item.id %}">Rejected</a> |
+                <a href="{% url 'interviewCall' item.id %}">Call For</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+  </div>
+  <!-- Bootstrap JS (optional) -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+
+{% endblock content %}

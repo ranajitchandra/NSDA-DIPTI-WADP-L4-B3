@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apply Job Model Table</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h2>Apply Job Model Table</h2>
+    <table class="table table-striped">
+        <thead>
+                <tr>
+                    <th>Job Title</th>
+                    <th>Company Name</th>
+                    <th>Salary</th>
+                    <th>Skill</th>
+                    <th>Qualification</th>
+                    <th>Applicant</th>
+                    <th>Status</th>
+                </tr>
+        </thead>
+        <tbody>
+            {% for item in applied_job %}
+            <tr>
+                <td>{{ item.for_job.job_title}}</td>
+                <td>{{ item.for_job.company_name}}</td>
+                <td>{{ item.for_job.salary}}</td>
+                <td>{{ item.skills }}</td>
+                <td>{{ item.qualification }}</td>
+                <td>{{ item.applicant.username }}</td>
+                <td>{{ item.status }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+  </div>
+  <!-- Bootstrap JS (optional) -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+
+{% endblock content %}

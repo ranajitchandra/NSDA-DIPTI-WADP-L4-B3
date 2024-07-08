@@ -1,0 +1,129 @@
+{% extends "profile.html" %}
+
+{% block profile %}
+<div class="card mb-3">
+    
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-3">
+                <h6 class="mb-0">Full Name</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+                {{user.first_name}} {{user.last_name}}
+            </div>
+        </div>
+    <hr>
+        <div class="row">
+            <div class="col-sm-3">
+                <h6 class="mb-0">Display Name</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+                {{user.display_name}}
+            </div>
+        </div>
+    <hr>
+        <div class="row">
+            <div class="col-sm-3">
+                <h6 class="mb-0">Gender</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+                {{user.gender}}
+            </div>
+        </div>
+    <hr>
+        <div class="row">
+            <div class="col-sm-3">
+                <h6 class="mb-0">Email</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+                {{user.email}} 
+            </div>
+        </div>
+    <hr>
+        <div class="row">
+            <div class="col-sm-3">
+                <h6 class="mb-0">User Type</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+                {{user.user_type}} 
+            </div>
+        </div>
+    <hr>
+        <div class="row">
+            <div class="col-sm-3">
+                <h6 class="mb-0">Date Of Birth</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+                {{user.dob}} 
+            </div>
+        </div>
+        <!-- Recruiter_profile -->
+    {% if user.jobrecruiter_profile %}
+    <hr>
+    <div class="row">
+        <div class="col-sm-3">
+            <h6 class="mb-0">Company Name</h6>
+        </div>
+        <div class="col-sm-9 text-secondary">
+            {{user.jobrecruiter_profile.company_name}} </br>    
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-sm-3">
+            <h6 class="mb-0">Company Address</h6>
+        </div>
+        <div class="col-sm-9 text-secondary">
+            {{user.jobrecruiter_profile.company_address}}   
+        </div>
+    </div>
+    <hr>
+        <a href="{% url 'edit_profile' %}" class="btn btn-success">Edit Profile</a>
+    
+    {% elif user.jobseeker_profile %}
+    <!-- Seekerr_profile -->
+    <hr>
+    <div class="row">
+        <div class="col-sm-3">
+            <h6 class="mb-0">Skill</h6>
+        </div>
+        <div class="col-sm-9 text-secondary">
+            {{user.jobseeker_profile.skill}} </br>    
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-sm-3">
+            <h6 class="mb-0">Work Exp</h6>
+        </div>
+        <div class="col-sm-9 text-secondary">
+            {{user.jobseeker_profile.work_exp}}    
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-sm-3">
+            <h6 class="mb-0">Highest Edu</h6>
+        </div>
+        <div class="col-sm-9 text-secondary">
+            {{user.jobseeker_profile.highest_edu}} 
+               
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-3">
+            <h6 class="mb-0">Resume</h6>
+        </div>
+        <div class="col-sm-9 text-secondary">
+            {{user.jobseeker_profile.resume}}
+            
+        </div>
+    </div>
+    {% else %}
+        <h6 class="mb-0"> It is Root User {{request.user.username}} </h6>
+    {% endif %}
+    </div>
+</div>
+
+{% endblock profile %}

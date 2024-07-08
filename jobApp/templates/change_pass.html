@@ -1,0 +1,34 @@
+{% extends "profile.html" %}
+
+{% block profile %}
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+	<div class="row">
+		<div class="col-sm-4">
+		    <form action="{% url 'update_pass' %}" method="POST">
+                {% csrf_token %}
+                <label>Current Password</label>
+                <div class="form-group pass_show"> 
+                    <input type="password" class="form-control" name="current_pass" placeholder="Current Password"> 
+                </div> 
+                <label>New Password</label>
+                <div class="form-group pass_show"> 
+                    <input type="password" class="form-control" name="new_pass" placeholder="New Password"> 
+                </div> 
+                <label>Confirm Password</label>
+                <div class="form-group pass_show"> 
+                    <input type="password" class="form-control" name="conf_pass" placeholder="Confirm Password"> 
+                </div> 
+                <div class="form-group pass_show"> 
+                    <input type="submit" class="form-control btn btn-success"> 
+                </div> 
+            </form>
+		</div>  
+	</div>
+</div>
+{% endblock profile %}
